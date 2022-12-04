@@ -41,7 +41,7 @@ def palindrome2(arg: str) -> bool:
             return False
     return True
 
-
+-0
 print(palindrome2(case1), palindrome2(case2), palindrome2(case3))
 
 
