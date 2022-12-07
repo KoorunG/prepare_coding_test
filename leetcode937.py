@@ -20,7 +20,7 @@ def reorderLogFiles(logs: List[str]) -> List[str]:
     # letters를 2개의 키를 기준으로 정렬
     # 람다식을 쓰는 부분을 주의할 것
     # sort는 key 매개변수로 함수나 람다식을 받으며 튜플이 오면 튜플의 요소 순차적으로 정렬한다.
-    letters.sort(key=lambda x: (x.split()[1: ], x.split()[0]))
+    letters.sort(key=lambda x: (x.split()[1:], x.split()[0]))
 
     return letters + digits
 

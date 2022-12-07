@@ -10,7 +10,7 @@ import bisect               # 이분탐색 라이브러리
 from typing import *        # 파이썬 타입지정 라이브러리
 
 
-deque = collections.deque()
-defaultdict = collections.defaultdict()
-print(type(deque))
-print(type(defaultdict))
+# deque = collections.deque()
+# defaultdict = collections.defaultdict()
+# print(type(deque))
+# print(type(defaultdict))
