@@ -122,7 +122,6 @@ def longestPalindrome3(s: str) -> str:
 # print(longestPalindrome2(s6))
 # print(longestPalindrome2(s7))
 
-
 print(longestPalindrome3(s))
 print(longestPalindrome3(s2))
 print(longestPalindrome3(s3))
