@@ -90,10 +90,43 @@ def longestPalindrome2(s: str) -> str:
                 slide -= 1
 
 
-print(longestPalindrome2(s))
-print(longestPalindrome2(s2))
-print(longestPalindrome2(s3))
-print(longestPalindrome2(s4))
-print(longestPalindrome2(s5))
-print(longestPalindrome2(s6))
-print(longestPalindrome2(s7))
+# 세 번째 풀이 : 투 포인터 슬라이딩 윈도우를 이용한 풀이
+# 펠린드롬의 길이가 짝수의 경우와 홀수의 경우 두 경우의 윈도우를 만들어 검사한다.
+def longestPalindrome3(s: str) -> str:
+    # 1. left와 right를 인수로 받아 확장하는 함수 expand 정의
+    # 윈도우는 s[left]와 s[right]이 같을 경우 확장한다.
+    def expand(left: int, right: int) -> str:
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return s[left + 1: right]
+
+    # 2. 문자열 슬라이싱을 이용한 필터링 (길이가 1인 경우 펠린드롬 | 뒤집었을 때 같은 경우 펠린드롬)
+    if len(s) < 2 or s == s[::-1]:
+        return s
+
+    result = ''
+
+    # 3. 슬라이딩 윈도우 이동
+    for i in range(0, len(s) - 1):
+        # key=len으로 길이를 기준으로 max값을 구한다.
+        result = max(result, expand(i, i + 1), expand(i, i + 2), key=len)
+    return result
+
+
+# print(longestPalindrome2(s))
+# print(longestPalindrome2(s2))
+# print(longestPalindrome2(s3))
+# print(longestPalindrome2(s4))
+# print(longestPalindrome2(s5))
+# print(longestPalindrome2(s6))
+# print(longestPalindrome2(s7))
+
+
+print(longestPalindrome3(s))
+print(longestPalindrome3(s2))
+print(longestPalindrome3(s3))
+print(longestPalindrome3(s4))
+print(longestPalindrome3(s5))
+print(longestPalindrome3(s6))
+print(longestPalindrome3(s7))
