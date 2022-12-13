@@ -9,3 +9,5 @@
 [참조] [파이썬 알고리즘 인터뷰 - 저자 : 박상길](https://product.kyobobook.co.kr/detail/S000001932748)
 
 [정리] [코딩테스트 대비 Notion 링크](https://calm-thorn-5f6.notion.site/517df9bab5d740c9821d4f4b62a72328)
+
+[문법] [타입 파이썬 - 인프런](https://www.inflearn.com/course/%ED%83%80%EC%9E%85-%ED%8C%8C%EC%9D%B4%EC%8D%AC/dashboard)
