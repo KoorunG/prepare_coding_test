@@ -81,3 +81,6 @@ print(siri.__doc__)
 print(siri.__class__)
 print(javis.__class__)
 print(Robot.__class__)
+
+Robot.robot_cal_add(10, 20)
+siri.robot_cal_add(10, 20)
