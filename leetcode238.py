@@ -29,7 +29,7 @@ class Solution:
                 mul *= num
             result.append(mul)
         return result
-
+    # 2. 투 포인터 활용 : 여전히 O(n^2)이므로 타임아웃
     def productExceptSelf2(self, nums: List[int]) -> List[int]:
         result = []
         # 이것만으로 O(n)
@@ -45,19 +45,23 @@ class Solution:
 
             result.append(mul_left * mul_right)
         return result
-
+    # 3. 교재 풀이 : 초기 리턴용 리스트 result에 값을 누적시키는 방향으로 O(n)을 달성함
     def productExceptSelf3(self, nums: List[int]) -> List[int]:
         # 결과를 담기 위한 공간
         result = []
         # 왼쪽 곱셈
         # 초기값 1
         mul = 1
+        # 왼쪽에서부터 끝까지 값을 곱해나간 값을 result에 append한다. (초기값 1)
         for i in range(0, len(nums)):
             result.append(mul)
             mul *= nums[i]
         # 오른쪽 곱셈
-        # 초기값 1
+        # mul을 다시 초기화하고
         mul = 1
+        # 리스트를 역순으로 순회한다.
+        # 여기서 각 result[i]에 mul을 곱하면서
+        # mul은 본래 nums[i]를 곱해나간다.
         for i in range(len(nums) - 1, -1, -1):
             result[i] *= mul
             mul *= nums[i]
