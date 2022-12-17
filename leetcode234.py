@@ -37,7 +37,36 @@ class Solution:
             return False
         return True
 
+    # 런너를 이용한 풀이 (익혀두자)
+    # 빠른 런너와 느린 런너 두가지를 만든다 (빠른런너의 이동속도가 두배 빠르게 설정)
+    # 빠른런너가 끝 지점에 도달하는 순간 느린 런너는 정확히 중간 지점에 도달하고
+    # 느린 런너가 여태 이동했던 자취를 역순으로 만든 뒤 끝지점까지 도달하면서 펠린드롬인지 검사한다.
+    def isPalindrome2(self, head: Optional[ListNode]) -> bool:
+        rev = None
+        slow = fast = head
+        if not head:
+            return True
+
+        # fast와 fast.next의 값이 존재하는 동안 반복
+        while fast and fast.next:
+            fast = fast.next.next
+            # rev : 역순으로 이어붙일 연결리스트
+            # 따라서 rev.next = rev로 초기화한다
+            rev, rev.next, slow = slow, rev, slow.next
+        # fast가 아직 존재하는 경우 (연결리스트가 홀수여서 위에서 마무리가 되지 않은 경우)
+        # slow를 한칸 더 옮겨준다.
+        if fast:
+            slow = slow.next
+
+        # rev.val == slow.val인동안 반복실행
+        while rev and rev.val == slow.val:
+            # rev를 풀어가면서 비교
+            slow, rev = slow.next, rev.next
+        # 펠린드롬이라면 slow와 rev가 None이 될때까지 이동한다.
+        return not rev
+
+
 
 sol = Solution()
 print(sol.isPalindrome(node1))
-# sol.isPalindrome(head2)
+print(sol.isPalindrome2(node1))
