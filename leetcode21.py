@@ -60,7 +60,7 @@ class Solution:
             list1, list2 = list2, list1
         # 재귀호출
         if list1:
-            list1_next = self.mergeTwoLists2(list1.next, list2)
+            list1.next = self.mergeTwoLists2(list1.next, list2)
         return list1
 
 sol = Solution()
