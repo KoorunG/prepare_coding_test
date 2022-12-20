@@ -50,9 +50,47 @@ class Solution:
             result.append(int(d))
         return self.make_node(result[::-1])
 
-    # 2. 전가산기 구현을 이용 (교재 풀이)
-    # 전가산기, 논리회로에 관한 지식이 부족하기 때문에 추가적인 공부 필요...
+    # a. 연결리스트 뒤집기
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        node, prev = head, None
+        while node:
+            next, node.next = node.next, prev
+            prev, node = node, next
+        return prev
+
+    # b. 연결리스트 -> list()
+    def toList(self, head: Optional[ListNode]) -> List:
+        result: List = []
+        node = head
+        while node:
+            result.append(node.val)
+            node = node.next
+        return result
+
+    # c. list() -> 연결리스트
+    def toLinkedList(self, num_list: List[int]) -> Optional[ListNode]:
+        prev: Optional[ListNode] = None
+        for n in num_list[::-1]:
+            node = ListNode(n)
+            node.next = prev
+            prev = node
+        return node
+
+    # 2. 교재 풀이 (형변환을 이용한 것으로 내 풀이와 비슷..._)
     def addTwoNumbers2(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        list1 = self.toList(self.reverseList(l1))
+        list2 = self.toList(self.reverseList(l2))
+        # 파이썬의 reduce 함수 사용법
+        # x, y를 받아 10x + y로 누적시킨 값
+        num1 = functools.reduce(lambda x, y: 10 * x + y, list1, 0)
+        num2 = functools.reduce(lambda x, y: 10 * x + y, list2, 0)
+        sum_nums = num1 + num2
+        return self.toLinkedList([int(s) for s in str(sum_nums)[::-1]])
+
+        # 3. 전가산기 구현을 이용 (교재 풀이)
+        # 전가산기, 논리회로에 관한 지식이 부족하기 때문에 추가적인 공부 필요...
+
+    def addTwoNumbers3(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         # root = head의 복사본
         root = head = ListNode(0)
 
@@ -80,5 +118,5 @@ class Solution:
 sol = Solution()
 node1 = sol.make_node([2, 4, 3])
 node2 = sol.make_node([5, 6, 4])
-print(sol.addTwoNumbers(node1, node2).val)
+# print(sol.addTwoNumbers(node1, node2).val)
 print(sol.addTwoNumbers2(node1, node2).val)
