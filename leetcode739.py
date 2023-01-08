@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/daily-temperatures/
 # 일일 온도를 나타내는 temperatures List[int] 가 주어진다.
 # 현재 온도보다 더 높은 온도가 나올 때 까지 기다려야 하는 일수를 리턴하는 List[int]를 구하라.
-
+import collections
 from typing import *
 
 
