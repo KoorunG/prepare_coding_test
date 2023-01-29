@@ -34,14 +34,10 @@ class Solution:
         int_dict = collections.defaultdict(int)
         count = 0
         for stone in stones:
-            if stone not in int_dict:
-                int_dict[stone] = 1
-            else:
-                int_dict[stone] += 1
+            int_dict[stone] += 1
 
         for jewel in jewels:
-            if jewel in int_dict:
-                count += int_dict[jewel]
+            count += int_dict[jewel]
         return count
 
 
